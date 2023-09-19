@@ -1,3 +1,3 @@
 # Algorithms
 
-### 1.Manacher's algorithm
+### 1. Manacher's algorithm
