@@ -1,4 +1,5 @@
 # Algorithms
+
 |INDEX|
 | -------- | 
 |[1. Manacher's algorithm](https://github.com/d2ep4k/Algorithms/blob/main/README.md#1-manachers-algorithm)|
@@ -34,3 +35,5 @@
 <br>
 
 ---
+
+## 1. Mo's algorithm
