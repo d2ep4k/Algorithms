@@ -8,7 +8,7 @@
 ## 1. Manacher's algorithm
 > Manacher’s algorithm is used to find the longest palindromic substring in a given string and was discovered by Glenn K. Manacher in 1975.
 
-### ALGORITHM :
+#### ALGORITHM :
 
 - Preprocess the input text by adding special characters (such as "*") between each pair of characters in order to simplify the procedure. The above method allows us to deal with even and odd-length palindromes in the same way.
 
