@@ -1,5 +1,7 @@
 # Algorithms
 
+|[1.Manacher's algorithm]()|
+
 ## 1. Manacher's algorithm
 > Manacher’s algorithm is used to find the longest palindromic substring in a given string and was discovered by Glenn K. Manacher in 1975.
 
