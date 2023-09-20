@@ -3,7 +3,7 @@
 |INDEX|
 | -------- | 
 |[1. Manacher's algorithm](https://github.com/d2ep4k/Algorithms/blob/main/README.md#1-manachers-algorithm)|
-|[2. Mo's algorithm]()|
+|[2. Mo's algorithm](https://github.com/d2ep4k/Algorithms/tree/main#2-mos-algorithm)|
 
 
 ## 1. Manacher's algorithm
