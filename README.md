@@ -36,4 +36,4 @@
 
 ---
 
-## 1. Mo's algorithm
+## 2. Mo's algorithm
