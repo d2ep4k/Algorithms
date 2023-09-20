@@ -6,7 +6,7 @@
 |[2. Mo's algorithm](https://github.com/d2ep4k/Algorithms/tree/main#2-mos-algorithm)|
 
 
-## 1. Manacher's algorithm
+## 1. Manacher's algorithm  [**](https://github.com/d2ep4k/Algorithms/blob/main/README.md#algorithms)
 > Manacher’s algorithm is used to find the longest palindromic substring in a given string and was discovered by Glenn K. Manacher in 1975.
 
 #### ALGORITHM :
