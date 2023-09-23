@@ -1,7 +1,7 @@
 #define SIZE 1e6
 class manacher {
     public:
-    vector<int> maxPalinAt;                                                        //maxPalinAt[i] stores longest Palindrome with index 'i' as the center
+    vector<int> maxPalinAt;                                                        //maxPalinAt[i] stores longest palindrome with index 'i' as the center
     string longestPalinSubstr;                                                     //stores longest Palindromic Substring
   
     manacher() {
