@@ -33,6 +33,8 @@
   
 [reference | cp-algorithms.com](https://cp-algorithms.com/string/manacher.html)
 <br>
+[cpp code](https://github.com/d2ep4k/Algorithms/blob/main/Manacher's%20Algorithm.cpp)
+<BR>
 
 ---
 
