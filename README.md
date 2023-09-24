@@ -59,3 +59,45 @@ FSM pattern matching:
 > - *Double circles denote the ultimate state*
 
 The DFA mentioned above may be used to find the word "aab" in any text string comprised only of a's and b's. The idea is to move between different final and non-final states as the input is read character by character. Depending on the character encountered, different transitions are present, and the current state is stored in a variable. If we are able to get to the final stage, the text string is "accepted", meaning the word is present.
+
+Componenets of KMP : 
+1. Pre-computation(pi) :
+    Pre-computation comprises LPS table construction, **LPS stands for the Longest proper prefix which is also a Suffix**. The construction of the LPS table is done in order to remove the partial matches from the table since if we continue to compute them, needless time and memory space will be consumed, slowing the process.
+
+   LPS :
+   LPS[i] stores the longest proper prefix, also a suffix for the substring ending at index i. A string's proper prefix is any other than the entire string itself.
+   
+   ![LPS](./img/LPS.jpeg)
+
+When a match is made incorrectly, LPS evaluation enables us to move on to the following potential (partial) match because it stores the longest proper prefix, which is also the suffix ending at the current index 'i'. The repeated failure of prospective matching results in null LPS. 
+   For example :
+   seacrhing for "ababc" in "abababc"
+   
+ Precomputing "ababc" :
+
+|  lps at\char        |a     |   b    |    a     |   b     |   c     |
+|  ---------------    | ---  |   ---  |    ---   |   ---   |    ---  |
+|    1                |$(0)  |        |          |         |         |
+|    2                |      |$(0)    |          |         |         |         
+|    3                |      |        |  a(1)    |         |         |        
+|    4                |      |        |    a     |  b(2)   |         |            
+|    5                |      |        |          |         |  $(0)   |         
+
+LPS table :
+|a     |   b    |    a     |   b     |   c     |
+| ---  |   ---  |    ---   |   ---   |    ---  |
+| 0    |    0   |     1    |    2    |    0    |
+   
+        
+   
+   
+   
+2. String matching :
+     1.    (potential match at ind 0)
+     
+   |a  |  b  |  a  | b  |  a  |  b  |  c  |          
+   | --- | ---  | ---  | ---  | --- | ---  | ---  |
+   | = | =   | =   |  =  | != |     |     |
+   | a |  b  |  a  |  b  | c  |     |     |
+      
+   3. a    b    a    b    a    b    c  
