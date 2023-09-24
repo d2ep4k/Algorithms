@@ -51,4 +51,11 @@
 The algorithm is similar to Automata theory, finite state automata pattern searching.
 
 FSM pattern matching: 
-    ![Patternmatching via FSM](./img/fsmPatternmatching.jpg)
+![Patternmatching via FSM](./img/fsmPatternmatching.jpg)
+> *DFA Graphical Representation*
+> - *States are represented by the vertices*
+> - *The transitions are displayed in the arcs with input alphabet labels*
+> - *An empty single incoming arc indicates the beginning condition*
+> - *Double circles denote the ultimate state*
+
+The DFA mentioned above may be used to find the word "aab" in any text string comprised only of a's and b's. The idea is to move between different final and non-final states as the input is read character by character. Depending on the character encountered, different transitions are present, and the current state is stored in a variable. If we are able to get to the final stage, the text string is "accepted", meaning the word is present.
