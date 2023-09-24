@@ -48,7 +48,9 @@
 > The **Knuth-Morris-Pratt algorithm**, also known as the KMP algorithm, is a string-searching algorithm that looks for instances of a "word" within a primary "text string" by making use of the observation that, in the event of a mismatch, the word itself contains enough information to determine where the next match could begin, avoiding the need to look again at previously matched characters, the time complexity of the overall algorithm is O(n + k), here n is length of "text string" and k is length of "word".
 
 #### ALGORITHM :
-The algorithm is similar to Automata theory, finite state automata pattern searching.
+The algorithm is similar to Automata theory, finite state automata pattern searching. The algorithm consists of two subroutines :
+- pi funtion => calculates the LPS list for the word string.
+- string matching => makes use of 2-pointer algorithm to match/parse word string.
 
 FSM pattern matching: 
 ![Patternmatching via FSM](./img/fsmPatternmatching.jpg)
@@ -61,43 +63,69 @@ FSM pattern matching:
 The DFA mentioned above may be used to find the word "aab" in any text string comprised only of a's and b's. The idea is to move between different final and non-final states as the input is read character by character. Depending on the character encountered, different transitions are present, and the current state is stored in a variable. If we are able to get to the final stage, the text string is "accepted", meaning the word is present.
 
 Componenets of KMP : 
-1. Pre-computation(pi) :
-    Pre-computation comprises LPS table construction, **LPS stands for the Longest proper prefix which is also a Suffix**. The construction of the LPS table is done in order to remove the partial matches from the table since if we continue to compute them, needless time and memory space will be consumed, slowing the process.
-
-   LPS :
-   LPS[i] stores the longest proper prefix, also a suffix for the substring ending at index i. A string's proper prefix is any other than the entire string itself.
+1. **Pre-computation(pi)** :
+    Pre-computation comprises LPS table construction, **LPS stands for the Longest proper prefix which is also a Suffix**. The construction of the LPS table is done in order       to remove the partial matches from the table since if we continue to compute them, needless time and memory space will be consumed, slowing the process.
    
-   ![LPS](./img/LPS.jpeg)
+    LPS :
+    LPS[i] stores the longest proper prefix, also a suffix for the substring ending at index i. A string's proper prefix is any other than the entire string itself.
+   
+    ![LPS](./img/LPS.jpeg)
+    When a match is made incorrectly, LPS evaluation enables us to move on to the following potential (partial) match because it stores the longest proper prefix, which is         also the suffix ending at the current index 'i'. The repeated failure of prospective matching results in null LPS. 
 
-When a match is made incorrectly, LPS evaluation enables us to move on to the following potential (partial) match because it stores the longest proper prefix, which is also the suffix ending at the current index 'i'. The repeated failure of prospective matching results in null LPS. 
-   For example :
-   seacrhing for "ababc" in "abababc"
+   
+2. **String matching** : String matching refers to traversing through the word string. The matching is done with the help of a 2-pointer algorithm, where both pointers initially point to the initial character (index 0) of the respective strings. Now, sequentially, the text string is traversed according to the best fit of the prefix of the word string with the current ending suffix of the text string. The string is accepted as the word pointer reaches word.length(), which means the word string is successfully traversed.
+
+
+
+For example : searching for "ababc" in "abababc"
    
  Precomputing "ababc" :
 
-|  lps at\char        |a     |   b    |    a     |   b     |   c     |
-|  ---------------    | ---  |   ---  |    ---   |   ---   |    ---  |
-|    1                |$(0)  |        |          |         |         |
-|    2                |      |$(0)    |          |         |         |         
-|    3                |      |        |  a(1)    |         |         |        
-|    4                |      |        |    a     |  b(2)   |         |            
-|    5                |      |        |          |         |  $(0)   |         
+|  lps at\char        |a       |   b    |    a     |   b     |   c     |
+|  ---------------    | ---    |   ---  |    ---   |   ---   |    ---  |
+|    1                |$(-1)   |        |          |         |         |
+|    2                |        |$(-1)   |          |         |         |         
+|    3                |        |        |  a(0)    |         |         |        
+|    4                |        |        |    a     |  b(1)   |         |            
+|    5                |        |        |          |         |  $(-1)  |         
 
 LPS table :
-|a     |   b    |    a     |   b     |   c     |
-| ---  |   ---  |    ---   |   ---   |    ---  |
-| 0    |    0   |     1    |    2    |    0    |
+
+| index   |0     |   1    |    2     |   3     |   4     |
+| ---     | ---  |   ---  |    ---   |   ---   |    ---  |
+|  char   |a     |   b    |    a     |   b     |   c     |
+|  lps    | -1   |    -1  |     0    |    1    |    -1   |
    
-        
-   
-   
-   
-2. String matching :
-     1.    (potential match at ind 0)
+**Using LPS table:**
+
+The LPS table is used when a mismatch occurs. Mismatch here refers to the varying current "word" character and current "text string" character. Now, if the character at index 4 is mismatched, we will search for the next potential match that is at index "lps[4-1]+1" i.e., index 2.
+
+> **Why "lps[4-1]+1"?**
+> 
+> As mentioned, every lps[i] stores the proper prefix of the string "word" which is also a suffix ending at index "i." If index "i" is a mismatch, we know the lps at index "i-1"; if not for the character "ch" (ch!='c'), which is a mismatch, the sequence of previous characters would have matched fine until index lps[i-1], Now we match the current character 'ch' with the element at index 'lps[i-1]+1', if success, we increment the pointer; otherwise, we recursively match for the index 'lps[i-1]+1', until the pointer points back to index '0'.
+
+
+**Matching** : 
+1. Potential match from index 0, here mismatch occurs at index 4 (word string) and index 4 (text string), so the next possible match would be found at index lps[i-1]+1 (word string), that is index 2 (word string), which implies that the current character of text string (text[4]) will now be matched with index lps[i-1]+1 character of word string( word[2].
      
-   |a  |  b  |  a  | b  |  a  |  b  |  c  |          
-   | --- | ---  | ---  | ---  | --- | ---  | ---  |
-   | = | =   | =   |  =  | != |     |     |
-   | a |  b  |  a  |  b  | c  |     |     |
-      
-   3. a    b    a    b    a    b    c  
+    |a    |  b  |  a  | b   |  a  |  b  |  c  |          
+    | --- | --- | --- | --- | --- | --- | --- |
+    | =   | =   | =   |  =  | !=  |     |     |        
+    | a   |  b  |  a  |  b  |  c  |     |     |
+
+    
+2. Now matching indices, word[2] and text[4], is a match, so increment both pointers and match the following characters.
+
+    |a    |  b  |  a  | b   |  a  |  b  |  c  |          
+    | --- | --- | --- | --- | --- | --- | --- |
+    |     |     | =   | =   | =   |  =  | =   |    
+    |     |     | a   |  b  |  a  |  b  | c   | 
+
+MATCHED!!!
+
+
+----
+
+
+
+
