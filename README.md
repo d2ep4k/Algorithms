@@ -4,7 +4,7 @@
 | -------- | 
 |[1. Manacher's algorithm](https://github.com/d2ep4k/Algorithms/blob/main/README.md#1-manachers-algorithm)|
 |[2. Mo's algorithm](https://github.com/d2ep4k/Algorithms/tree/main#2-mos-algorithm)|
-|[3. KMP algorithm](https://github.com/d2ep4k/Algorithms/tree/main#2-kmp-algorithm)|
+|[3. KMP algorithm](https://github.com/d2ep4k/Algorithms/tree/main#3-kmp-algorithm)|
 
 ## 1. Manacher's algorithm  
 > **Manacher’s algorithm** is used to find the longest palindromic substring in a given string in linear time and was discovered by Glenn K. Manacher in 1975.
