@@ -5,6 +5,7 @@
 |[1. Manacher's algorithm](https://github.com/d2ep4k/Algorithms/blob/main/README.md#1-manachers-algorithm)|
 |[2. Mo's algorithm](https://github.com/d2ep4k/Algorithms/tree/main#2-mos-algorithm)|
 |[3. KMP algorithm](https://github.com/d2ep4k/Algorithms/tree/main#3-kmp-algorithm)|
+|[4. Boyer Moore majority vote algorithm](https://github.com/d2ep4k/Algorithms/tree/main#4-boyer-moore-majority-vote-algorithm)|
 
 ## 1. Manacher's algorithm  
 > **Manacher’s algorithm** is used to find the longest palindromic substring in a given string in linear time and was discovered by Glenn K. Manacher in 1975.
@@ -122,6 +123,37 @@ The LPS table is used when a mismatch occurs. Mismatch here refers to the varyin
     |     |     | a   |  b  |  a  |  b  | c   | 
 
 MATCHED!!!
+
+
+---
+
+## 3. Boyer Moore majority vote algorithm
+
+The algorithm looks for a majority element, if one exists. Among the input elements, a majority element is one that shows up more frequently than 50% of the time. The algorithm, however, will continue to output one of the items if there isn't a majority and won't recognize this.
+
+Two sections make up the algorithm. An element that is a majority is discovered in a first pass, and its majority status is then confirmed in a second pass.
+
+#### ALGORITHM
+
+In order to maintain track of a sequence element and a counter, we set up a local variable called m. The counter is started out at zero. After that, we repeat the sequence's components. If the counter is zero during processing element x, the algorithm sets the counter to one and remembers x as a sequence element. If not, it evaluates x against the saved element. We increase the counter if the element is the same, and we decrease the counter if it is different. If the majority element still remains at the end, the algorithm will store it there.
+
+**First Pass :**
+
+Finding a candidate with the majority in the first pass
+
+    - Set up the variables m and count with initial values of 0.
+    - For every xth component of the input sequence:
+    - If count is equal to zero, we set m to equal x and count to 1, otherwise we increase count if m is also equal to x.
+    - if not, we reduce the count.
+    - Lastly, give back the saved element m.
+
+**Second Pass :**
+
+Checking if the contender has more than n/2 votes on the second pass
+
+    - Set a variable's count initial value to zero.
+    - If an element is the same as a candidate, loop over the list of items and increase the count.
+    - Return the candidate if the count is larger than n/2
 
 
 ----
