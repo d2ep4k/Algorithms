@@ -127,7 +127,7 @@ MATCHED!!!
 
 ---
 
-## 3. Boyer Moore majority vote algorithm
+## 4. Boyer Moore majority vote algorithm
 
 The algorithm looks for a majority element, if one exists. Among the input elements, a majority element is one that shows up more frequently than 50% of the time. The algorithm, however, will continue to output one of the items if there isn't a majority and won't recognize this.
 
