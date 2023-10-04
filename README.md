@@ -6,6 +6,8 @@
 |[2. Mo's algorithm](https://github.com/d2ep4k/Algorithms/tree/main#2-mos-algorithm)|
 |[3. KMP algorithm](https://github.com/d2ep4k/Algorithms/tree/main#3-kmp-algorithm)|
 |[4. Boyer Moore majority vote algorithm](https://github.com/d2ep4k/Algorithms/tree/main#4-boyer-moore-majority-vote-algorithm)|
+|[5. AHU encoding algorithm](https://github.com/d2ep4k/Algorithms/tree/main#5-ahu-encoding-algorithm)|
+
 
 ## 1. Manacher's algorithm  
 > **Manacher’s algorithm** is used to find the longest palindromic substring in a given string in linear time and was discovered by Glenn K. Manacher in 1975.
@@ -155,6 +157,18 @@ Checking if the contender has more than n/2 votes on the second pass
     - If an element is the same as a candidate, loop over the list of items and increase the count.
     - Return the candidate if the count is larger than n/2
 
+---
+
+## 5. AHU encoding algorithm
+
+AHU encoding, Aho, Hopcroft and Ullman Algorithm determines tree isomorphism in linear time O(V) for faster and more complex version and O(V^2) for the slower one. It leverages the vertex descendants' degree spectrum's whole history as an in-depth invariant.
+
+#### Rooting tree : 
+In the case of unrooted trees, encoding the structure with random roots is not a good idea, so to 
+
+
+
+[*reference*](https://wwwmayr.in.tum.de/konferenzen/Jass08/courses/1/smal/Smal_Paper.pdf)
 
 ----
 
