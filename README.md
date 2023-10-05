@@ -164,8 +164,16 @@ Checking if the contender has more than n/2 votes on the second pass
 AHU encoding, Aho, Hopcroft and Ullman Algorithm determines tree isomorphism in linear time O(V) for faster and more complex version and O(V^2) for the slower one. It leverages the vertex descendants' degree spectrum's whole history as an in-depth invariant.
 
 #### Rooting tree : 
-In the case of unrooted trees, encoding the structure with random roots is not a good idea, so to 
+In the case of unrooted trees, encoding the structure with random roots is not a good idea, so to envoke parity in between tree we shall root the trees from the 'center' node.
+> The center of a tree is a vertex with minimal eccentricity. The eccentricity of a vertex X in a tree G is the maximum distance between the vertex X and any other vertex of the tree.
 
+**Algorithm to find center(s) of tree :**
+
+1. Make an arbitrary list to hold the minimum distance between nodes and (any)leaf nodes.
+2. Push all the leaf nodes (degree == 1) into a queue.
+3. Perform a bfs on nodes.
+4. Until each node is visited, mark and incrementally increase the distance for each node.
+5. The center node(s) are the node(s) with the greatest distance after traversal.
 
 
 [*reference*](https://wwwmayr.in.tum.de/konferenzen/Jass08/courses/1/smal/Smal_Paper.pdf)
