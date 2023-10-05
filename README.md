@@ -166,7 +166,7 @@ Checking if the contender has more than n/2 votes on the second pass
 
 ## 5. AHU encoding algorithm
 
-AHU encoding, Aho, Hopcroft and Ullman Algorithm determines tree isomorphism in linear time O(V) for faster and more complex version and O(V^2) for the slower one. It leverages the vertex descendants' degree spectrum's whole history as an in-depth invariant.
+AHU encoding, Aho, Hopcroft and Ullman Algorithm determines tree isomorphism in O(log(V)*V^2) time complexity(amortised O(V^2))(*faster and more complex version works in linear time*). It leverages the vertex descendants' degree spectrum's whole history as an in-depth invariant.
 
 #### Rooting tree : 
 In the case of unrooted trees, encoding the structure with random roots is not a good idea, so to envoke parity in between tree we shall root the trees from the 'center' node.
@@ -180,10 +180,57 @@ In the case of unrooted trees, encoding the structure with random roots is not a
 4. Until each node is visited, mark and incrementally increase the distance for each node.
 5. The center node(s) are the node(s) with the greatest distance after traversal.
 
-*For bi-centeric trees we have to consider both vertices as potential root, and hence for bi-centeric trees seperate encoding will be done for both of the node.*
+*We must take into account both vertices as possible roots for bi-centeric trees, hence separate encoding will be performed for each center node.*
+
+#### Encoding :
+
+**DFS arrival and departure time encoding + sorting**
+
+> The arrival time is the moment when the vertex was initially explored in the DFS, and the departure time is the moment when we had searched all the child/neighbor vertices.
+> *(arrival time is also known as in-time and departure time is also known as out-time)*
+
+Algorithm - 
+1. After visiting the node for the first time, append '(' to an empty string.
+2. Afterwards, visit every child node and follow aforementioned step recursively.
+3. Sort all the strings obtained through recursion calls and sequentially append each one to the the original string.
+4. Before leaving the node and backtracking, return the string by adding ')' to the end of it.
+5. Continue performing steps 1–3 until every node has been reached.
 
 
+                         20                                  
+                       /    \                    sorting in descending order
+                     1       45                              
+                   /  \      /                   Encoding (with values):   ( 20 ( 1 ( 2 ( 6 ) ) ( 4 ) ) ( 45 ( 8 ) ) ) 
+                  2    4    8                                
+                   \                             Encoding :   ( ( ( ( ) ) ( ) ) ( ( ) ) ) 
+                    6
 
+
+> Why encoding without values?
+> 
+> We only need the structure of trees regardless of the values at the corresponding nodes in order to demonstrate isomorphism, and hence we do not consider the values of nodes when encoding.
+
+
+> Why sorting?
+> 
+> By sorting it is possible to curate strings obtained through recursive calls based on their weights rather than randomly placing them, which makes matching more difficult to compare strings.
+
+With the help of the aforementioned algorithm, we can encode a tree with potential roots (center nodes), compare the encoded string, and declare the trees to be isomorphic if a match is found. 
+
+Example :
+
+                             20                                                       16          
+                           /    \                                                   /    \   
+                         1       45                                               10      12   
+                       /  \      /                                               /        /  \        
+                      2    4    8                                               5        15   9
+                       \                                                                     /  
+                        6                                                                   1                          
+    
+        Encoding1 (with values):   (20(1(2(6))(4))(45(8)))         Encoding2 (with values):   (16(12(9(1))(15))(10(5))) 
+        Encoding1 :   ( ( ( ( ) ) ( ) ) ( ( ) ) )                  Encoding2 :   ( ( ( ( ) ) ( ) ) ( ( ) ) ) 
+        
+                                        as, Encoding1 = Encoding2 trees are isomorphic
 
 [*reference*](https://wwwmayr.in.tum.de/konferenzen/Jass08/courses/1/smal/Smal_Paper.pdf)
 
