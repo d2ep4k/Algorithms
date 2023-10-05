@@ -139,7 +139,7 @@ Two sections make up the algorithm. An element that is a majority is discovered 
 
 #### ALGORITHM
 
-In order to maintain track of a sequence element and a counter, we set up a local variable called m. The counter is started out at zero. After that, we repeat the sequence's components. If the counter is zero during processing element x, the algorithm sets the counter to one and remembers x as a sequence element. If not, it evaluates x against the saved element. We increase the counter if the element is the same, and we decrease the counter if it is different. If the majority element still remains at the end, the algorithm will store it there.
+In order to keep track of a sequence element and a counter, we initialize a local variable called m. The counter is started at zero at the beginning. After that, we repeat the sequence's components. If the counter is zero while processing element x, the algorithm sets the counter to one and remembers x as a sequence element. If not, it evaluates x against the saved element. When an element is the same, the counter is increased; when it is not, the counter is decreased. If the majority element still exists at the end, the algorithm will store it there.
 
 **First Pass :**
 
