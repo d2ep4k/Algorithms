@@ -126,6 +126,8 @@ The LPS table is used when a mismatch occurs. Mismatch here refers to the varyin
 
 MATCHED!!!
 
+[cpp code](https://github.com/d2ep4k/Algorithms/blob/main/KMP%20Algorithm(pattern%20matching).cpp)
+<BR>
 
 ---
 
@@ -157,6 +159,9 @@ Checking if the contender has more than n/2 votes on the second pass
     - If an element is the same as a candidate, loop over the list of items and increase the count.
     - Return the candidate if the count is larger than n/2
 
+[cpp code](https://github.com/d2ep4k/Algorithms/blob/main/Boyer%20Moore%20majority%20vote%20algorithm.cpp)
+<BR>
+
 ---
 
 ## 5. AHU encoding algorithm
@@ -175,8 +180,15 @@ In the case of unrooted trees, encoding the structure with random roots is not a
 4. Until each node is visited, mark and incrementally increase the distance for each node.
 5. The center node(s) are the node(s) with the greatest distance after traversal.
 
+*For bi-centeric trees we have to consider both vertices as potential root, and hence for bi-centeric trees seperate encoding will be done for both of the node.*
+
+
+
 
 [*reference*](https://wwwmayr.in.tum.de/konferenzen/Jass08/courses/1/smal/Smal_Paper.pdf)
+
+[cpp code](https://github.com/d2ep4k/Algorithms/blob/main/AHU%20encoding(Tree%20Isomorphism).cpp)
+<BR>
 
 ----
 
