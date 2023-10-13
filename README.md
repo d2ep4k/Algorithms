@@ -1,4 +1,7 @@
 # Algorithms
+Algorithms are pre-defined, self-contained sets of instructions intended to carry out a variety of functions. They are the fundamental units of programming, and they enable the operation and decision-making of devices including desktops, mobile devices, and websites.
+
+Some intriguing algorithms... 
 
 |INDEX|
 | -------- | 
