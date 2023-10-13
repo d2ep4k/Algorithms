@@ -219,16 +219,16 @@ With the help of the aforementioned algorithm, we can encode a tree with potenti
 
 Example :
 
-                             20                                                       16          
-                           /    \                                                   /    \   
-                         1       45                                               10      12   
-                       /  \      /                                               /        /  \        
-                      2    4    8                                               5        15   9
-                       \                                                                     /  
-                        6                                                                   1                          
+                             20                                                    16          
+                           /    \                                                /    \   
+                         1       45                                            10      12   
+                       /  \      /                                            /        /  \        
+                      2    4    8                                            5        15   9
+                       \                                                                  /  
+                        6                                                                1                          
     
-        Encoding1 (with values):   (20(1(2(6))(4))(45(8)))         Encoding2 (with values):   (16(12(9(1))(15))(10(5))) 
-        Encoding1 :   ( ( ( ( ) ) ( ) ) ( ( ) ) )                  Encoding2 :   ( ( ( ( ) ) ( ) ) ( ( ) ) ) 
+        Encoding1 (with values):   (20(1(2(6))(4))(45(8)))     Encoding2 (with values):   (16(12(9(1))(15))(10(5))) 
+        Encoding1 :   ( ( ( ( ) ) ( ) ) ( ( ) ) )              Encoding2 :   ( ( ( ( ) ) ( ) ) ( ( ) ) ) 
         
                                         as, Encoding1 = Encoding2 trees are isomorphic
 
