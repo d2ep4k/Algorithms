@@ -36,6 +36,8 @@ Some intriguing algorithms...
 
 *PALINDROME MIRRORING*
     ![Manacher1](./img/Manacher1.jpg)
+
+*incomplete!!!*
   
 [reference | cp-algorithms.com](https://cp-algorithms.com/string/manacher.html)
 <br>
